@@ -27,10 +27,12 @@ data
 import re
 import nltk
 nltk.download('stopwords')
+
+# pyrefly: ignore [missing-import]
 from nltk.corpus import stopwords
 import string
 
-stopwords = set(stopwords.words("english"))
+stopwords_set = set(stopwords.words("english"))         
 
 #Import Stemming
 stemmer = nltk.SnowballStemmer("english")
@@ -44,7 +46,7 @@ def clean_data(text):
     text = re.sub('[%s]' %re.escape(string.punctuation), '', text)
     text = re.sub(r'\n', '', text)
     text = re.sub(r'\w*\d\w*', '', text)
-    text = [word for word in text.split() if word not in stopwords]
+    text = [word for word in text.split() if word not in stopwords_set]
     text = " ".join(text)
     #Stemming the text
     text = [stemmer.stem(word) for word in text.split(' ')]
