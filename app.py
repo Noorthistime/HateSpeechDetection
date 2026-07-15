@@ -434,6 +434,51 @@ st.markdown("""
         box-shadow: 6px 0 25px rgba(0, 0, 0, 0.45) !important;
     }
 
+    /* --- Mobile Responsiveness --- */
+    @media (max-width: 768px) {
+        .stApp::before {
+            width: 150px;
+            height: 150px;
+            right: -10%;
+            top: 5%;
+        }
+        .stApp::after {
+            width: 180px;
+            height: 180px;
+            left: -10%;
+            bottom: 5%;
+        }
+        .premium-hero {
+            padding: 16px 12px;
+            margin: -25px 0 15px 0 !important;
+        }
+        .premium-hero h1 {
+            font-size: 1.5rem !important;
+        }
+        [data-testid="column"] {
+            padding: 14px !important;
+            margin-bottom: 12px !important;
+        }
+        .main .block-container {
+            padding: 1rem !important;
+        }
+        div[data-testid="stMarkdownContainer"] h2 {
+            font-size: 1.2em !important;
+            margin-top: 5px !important;
+        }
+        div[data-testid="stMarkdownContainer"] h3 {
+            font-size: 1.1em !important;
+        }
+        .tech-tooltip-box {
+            width: 240px;
+            font-size: 0.85em;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+        }
+        .stButton > button {
+            padding: 8px 16px !important;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
