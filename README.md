@@ -2,6 +2,7 @@
 A full-stack NLP and machine learning web application for detecting, classifying, and analyzing hate speech and offensive language using Python, Scikit-learn, NLTK, and Streamlit.
 
 ## Project Structure
+```text
 HateSpeech/
 ├── .streamlit/             # Streamlit theme and UI configurations
 ├── app.py                  # Full-stack Streamlit application (Frontend UI & Backend NLP logic)
@@ -9,6 +10,7 @@ HateSpeech/
 ├── labeled_data.csv        # Dataset containing labeled hate speech & offensive language tweets
 ├── requirements.txt        # Python dependency specifications
 └── README.md               # Project documentation
+```
 
 ## Features
 1. **Interactive NLP & ML Explorer**
