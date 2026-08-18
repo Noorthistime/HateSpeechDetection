@@ -483,7 +483,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 def show_explanation(text, technique=None):
-    st.markdown(f'<div style="background: rgba(0, 194, 255, 0.12); border-left: 4px solid #00c2ff; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid rgba(0, 194, 255, 0.25);"><strong style="color: #00c2ff; font-size: 1.05em; display: block; margin-bottom: 6px;">What this block did:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{text}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background: rgba(0, 194, 255, 0.12); border-left: 4px solid #00c2ff; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid rgba(0, 194, 255, 0.25); word-wrap: break-word; overflow-wrap: break-word;"><strong style="color: #00c2ff; font-size: 1.05em; display: block; margin-bottom: 6px;">What this block did:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{text}</span></div>', unsafe_allow_html=True)
 
 def render_explain_button(tab_name, explanation_text, technique=None):
     btn_key = f"explain_state_{tab_name}"
@@ -495,7 +495,7 @@ def render_explain_button(tab_name, explanation_text, technique=None):
         st.session_state[btn_key] = not st.session_state[btn_key]
 
     if st.session_state[btn_key]:
-        st.markdown(f'<div style="background: rgba(0, 194, 255, 0.12); border-left: 4px solid #00c2ff; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid rgba(0, 194, 255, 0.25);"><strong style="color: #00c2ff; font-size: 1.05em; display: block; margin-bottom: 6px;">Page Explanation:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{explanation_text}</span></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background: rgba(0, 194, 255, 0.12); border-left: 4px solid #00c2ff; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid rgba(0, 194, 255, 0.25); word-wrap: break-word; overflow-wrap: break-word;"><strong style="color: #00c2ff; font-size: 1.05em; display: block; margin-bottom: 6px;">Page Explanation:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{explanation_text}</span></div>', unsafe_allow_html=True)
 
 
 
@@ -774,7 +774,7 @@ elif menu == "4. Full Code Explorer":
     if 'hate_active_block' not in st.session_state:
         st.session_state.hate_active_block = None
 
-    col1, col2 = st.columns([1, 1])
+    col1, col2 = st.columns([1.5, 1], gap="large")
     with col1:
         st.subheader("Interactive Code Explorer")
         
