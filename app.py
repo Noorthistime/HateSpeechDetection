@@ -930,11 +930,14 @@ elif menu == "5. View Raw Source Code":
     
     st.markdown("---")
     if st.button("▶ Run Full Source Code", type="primary", use_container_width=True):
+        import time
         col1, col2 = st.columns([1.5, 1])
         with col1:
             st.markdown("### Output")
-            # Placeholder for outputs
+            output_data_load = st.empty()
+            output_cleaning = st.empty()
+            output_model = st.empty()
         with col2:
             st.markdown("### Execution Status")
-            # Placeholder for dynamic status
+            status_panel = st.empty()
 
