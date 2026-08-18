@@ -292,9 +292,12 @@ st.markdown("""
         box-shadow: 0 0 15px rgba(0, 194, 255, 0.25), inset 0 0 8px rgba(0, 194, 255, 0.15);
     }
 
-    /* Hide the radio bullet circle to keep it modern and clean */
+    /* Restore the radio bullet circle and make it red when active */
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
-        display: none !important;
+        margin-right: 8px;
+    }
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label[data-checked="true"] > div:first-child div {
+        background-color: #ff4b4b !important;
     }
 
     /* Hide redundant radio widget label */
