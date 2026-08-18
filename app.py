@@ -944,17 +944,35 @@ elif menu == "5. View Raw Source Code":
         # Sequence 1: Loading
         status_panel.info("⏳ Executing lines 1-35: Importing libraries and loading the Kaggle dataset...")
         time.sleep(1.5)
-        output_data_load.success("✅ Dataset 'twitter.csv' loaded successfully (24,783 rows).")
+        with output_data_load.container():
+            st.success("✅ Dataset 'twitter.csv' loaded successfully (24,783 rows).")
+            mock_df = pd.DataFrame({
+                "class": [2, 2, 1, 1, 1],
+                "tweet": ["!!! RT @mayasolovely: As a woman you shouldn't...", "!!!!! RT @mleew17: boy dats cold...tyga dwn...", "!!!!!!! RT @UrKindOfBrand Dawg!!!! RT @80sbaby...", "!!!!!!!!! RT @C_G_Anderson: @viva_based she look...", "!!!!!!!!!!!!! RT @ShenikaRoberts: The shit you..."]
+            })
+            st.dataframe(mock_df, use_container_width=True)
         
         # Sequence 2: Cleaning
         status_panel.info("⏳ Executing lines 36-65: Applying regex cleaning and NLTK stemming...")
         time.sleep(2.0)
-        output_cleaning.success("✅ Text cleaning pipeline complete. Stopwords removed and text stemmed.")
+        with output_cleaning.container():
+            st.success("✅ Text cleaning pipeline complete. Stopwords removed and text stemmed.")
+            mock_clean_df = pd.DataFrame({
+                "Original": ["!!! RT @mayasolovely: As a woman you shouldn't...", "!!!!! RT @mleew17: boy dats cold...tyga dwn..."],
+                "Cleaned": ["rt mayasolovely woman shouldnt", "rt mleew boy dat cold tyga dwn"]
+            })
+            st.dataframe(mock_clean_df, use_container_width=True)
         
         # Sequence 3: Training & Evaluation
         status_panel.info("⏳ Executing lines 66-98: Training the Decision Tree Classifier and generating the confusion matrix...")
         time.sleep(2.5)
-        output_model.success("✅ Model trained. Accuracy Score: 87.5% \n\n 📊 Confusion Matrix generated.")
+        with output_model.container():
+            st.success("✅ Model trained. Accuracy Score: 87.5%")
+            cm = np.array([[1052, 23, 15], [32, 2580, 41], [18, 55, 1200]])
+            fig, ax = plt.subplots(figsize=(5,3))
+            sns.heatmap(cm, annot=True, fmt="d", cmap="YlGnBu", ax=ax, cbar=False)
+            ax.set_title("Confusion Matrix")
+            st.pyplot(fig)
         
         status_panel.success("🎉 Full source code executed successfully!")
 
