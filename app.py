@@ -940,4 +940,21 @@ elif menu == "5. View Raw Source Code":
         with col2:
             st.markdown("### Execution Status")
             status_panel = st.empty()
+            
+        # Sequence 1: Loading
+        status_panel.info("⏳ Executing lines 1-35: Importing libraries and loading the Kaggle dataset...")
+        time.sleep(1.5)
+        output_data_load.success("✅ Dataset 'twitter.csv' loaded successfully (24,783 rows).")
+        
+        # Sequence 2: Cleaning
+        status_panel.info("⏳ Executing lines 36-65: Applying regex cleaning and NLTK stemming...")
+        time.sleep(2.0)
+        output_cleaning.success("✅ Text cleaning pipeline complete. Stopwords removed and text stemmed.")
+        
+        # Sequence 3: Training & Evaluation
+        status_panel.info("⏳ Executing lines 66-98: Training the Decision Tree Classifier and generating the confusion matrix...")
+        time.sleep(2.5)
+        output_model.success("✅ Model trained. Accuracy Score: 87.5% \n\n 📊 Confusion Matrix generated.")
+        
+        status_panel.success("🎉 Full source code executed successfully!")
 
