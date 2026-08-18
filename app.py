@@ -927,4 +927,14 @@ elif menu == "5. View Raw Source Code":
         except FileNotFoundError:
             st.error("Original code file not found.")
     render_explain_button("raw_source", "This page retrieves and displays the original <span class='tech-hover-container'><span class='glow-tech'>raw source code</span><span class='tech-tooltip-box'><strong>Raw Source Code</strong>The original human-readable computer programming instructions (in Python) written to process data and build the predictive pipeline.</span></span> from the local <span class='tech-hover-container'><span class='glow-tech'>filesystem</span><span class='tech-tooltip-box'><strong>Filesystem</strong>The structural storage hierarchy on the operating system that houses and organizes files, scripts, and datasets.</span></span>, showing the original scripting steps used to develop this <span class='tech-hover-container'><span class='glow-tech'>machine learning model</span><span class='tech-tooltip-box'><strong>Machine Learning Model</strong>A mathematical construct trained on data features to learn decision boundaries, allowing it to make predictions on new data.</span></span>.")
+    
+    st.markdown("---")
+    if st.button("▶ Run Full Source Code", type="primary", use_container_width=True):
+        col1, col2 = st.columns([1.5, 1])
+        with col1:
+            st.markdown("### Output")
+            # Placeholder for outputs
+        with col2:
+            st.markdown("### Execution Status")
+            # Placeholder for dynamic status
 
