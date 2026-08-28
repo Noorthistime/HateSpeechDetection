@@ -1,5 +1,6 @@
 # pyrefly: ignore [missing-import]
 import streamlit as st
+import streamlit.components.v1 as components
 import pandas as pd
 import numpy as np
 import sklearn
@@ -149,9 +150,17 @@ if st.session_state.theme == 'default':
         text-shadow: 0 0 18px rgba(79, 70, 229, 0.28);
     }
 
+    div.element-container:has(.premium-hero),
+    div.stMarkdown:has(.premium-hero) {
+        position: sticky !important;
+        top: 15px !important;
+        z-index: 999 !important;
+    }
+
     .premium-hero {
         position: relative;
-        margin: -45px 0 20px 0 !important;
+        width: 100%;
+        margin: -45px auto 20px auto !important;
         padding: 20px 24px;
         border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.34);
@@ -159,18 +168,23 @@ if st.session_state.theme == 'default':
         backdrop-filter: blur(18px);
         box-shadow: 0 16px 38px rgba(4, 12, 34, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.22);
         overflow: hidden;
-        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         text-align: center;
     }
 
-    .premium-hero::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-        background-size: 220% 100%;
-        animation: shimmer 6.5s linear infinite;
-        pointer-events: none;
+    .premium-hero.pill-mode {
+        width: 85% !important;
+        margin: 0 auto 20px auto !important;
+        padding: 12px 40px !important;
+        border-radius: 50px !important;
+        background: linear-gradient(130deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05)) !important;
+        box-shadow: 0 10px 30px rgba(4, 12, 34, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+    }
+    
+    .premium-hero.pill-mode h1 {
+        font-size: 1.6rem !important;
     }
 
     .premium-hero:hover {
@@ -640,9 +654,18 @@ elif st.session_state.theme == 'stitch':
         color: #ff3366 !important;
         font-weight: 600 !important;
     }
+
+    div.element-container:has(.premium-hero),
+    div.stMarkdown:has(.premium-hero) {
+        position: sticky !important;
+        top: 15px !important;
+        z-index: 999 !important;
+    }
+
     .premium-hero {
         position: relative;
-        margin: -45px 0 20px 0 !important;
+        width: 100%;
+        margin: -45px auto 20px auto !important;
         padding: 20px 24px;
         border-radius: 18px;
         border: 1px solid rgba(255, 255, 255, 0.34);
@@ -650,8 +673,23 @@ elif st.session_state.theme == 'stitch':
         backdrop-filter: blur(18px);
         box-shadow: 0 16px 38px rgba(40, 8, 15, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.22);
         overflow: hidden;
-        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         text-align: center;
+    }
+
+    .premium-hero.pill-mode {
+        width: 85% !important;
+        margin: 0 auto 20px auto !important;
+        padding: 12px 40px !important;
+        border-radius: 50px !important;
+        background: linear-gradient(130deg, rgba(255, 51, 102, 0.15), rgba(255, 51, 102, 0.05)) !important;
+        box-shadow: 0 10px 30px rgba(40, 8, 15, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(8px) !important;
+        -webkit-backdrop-filter: blur(8px) !important;
+    }
+    
+    .premium-hero.pill-mode h1 {
+        font-size: 1.6rem !important;
     }
 
     .premium-hero::before {
@@ -775,11 +813,37 @@ def train_model():
 
 cv, dt, y_test, y_pred = train_model()
 
+st.markdown('<div id="hero-scroll-marker" style="position: absolute; top: -10px;"></div>', unsafe_allow_html=True)
+
 st.markdown("""
 <div class="premium-hero">
     <h1>Hate Speech Detection</h1>
 </div>
 """, unsafe_allow_html=True)
+
+components.html("""
+<script>
+    const parentDoc = window.parent.document;
+    const marker = parentDoc.getElementById('hero-scroll-marker');
+    const heroes = parentDoc.querySelectorAll('.premium-hero');
+
+    if (marker && heroes.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                heroes.forEach(hero => {
+                    if (!entry.isIntersecting) {
+                        hero.classList.add('pill-mode');
+                    } else {
+                        hero.classList.remove('pill-mode');
+                    }
+                });
+            });
+        }, { root: null, threshold: 0 });
+        
+        observer.observe(marker);
+    }
+</script>
+""", height=0, width=0)
 
 if menu != "Project Overview":
     st.markdown(f"""
