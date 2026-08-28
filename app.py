@@ -21,7 +21,17 @@ except LookupError:
 
 st.set_page_config(page_title="Hate Speech Detection", layout="wide")
 
-st.markdown("""
+if 'theme' not in st.session_state:
+    st.session_state.theme = 'default'
+
+# Theme Toggle UI
+col1, col2 = st.columns([10, 1])
+with col2:
+    is_stitch = st.toggle("Crimson Theme", value=(st.session_state.theme == 'stitch'))
+    st.session_state.theme = 'stitch' if is_stitch else 'default'
+
+if st.session_state.theme == 'default':
+    st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
@@ -485,8 +495,96 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+elif st.session_state.theme == 'stitch':
+    st.markdown("""
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+    :root {
+        --glass-bg: rgba(255, 255, 255, 0.05);
+        --glass-border: rgba(255, 60, 100, 0.4);
+        --glass-shadow: 0 12px 36px rgba(40, 8, 15, 0.35);
+        --brand-1: #ff3366;
+        --brand-2: #8b0000;
+        --brand-3: #ff6633;
+    }
+
+    html, body, [class*="css"] {
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
+    }
+
+    .stApp {
+        background:
+            radial-gradient(circle at 10% 12%, rgba(255, 51, 102, 0.18), transparent 34%),
+            radial-gradient(circle at 88% 20%, rgba(204, 0, 51, 0.18), transparent 40%),
+            radial-gradient(circle at 50% 86%, rgba(139, 0, 0, 0.2), transparent 45%),
+            linear-gradient(145deg, #1a0808 0%, #2a0b12 46%, #120306 100%);
+        background-attachment: fixed;
+        color: #ffeeee;
+    }
+    
+    [data-testid="stSidebar"] {
+        background: rgba(26, 8, 8, 0.6) !important;
+        backdrop-filter: blur(16px) !important;
+        -webkit-backdrop-filter: blur(16px) !important;
+        border-right: 1px solid var(--glass-border) !important;
+        box-shadow: 4px 0 24px rgba(255, 51, 102, 0.1) !important;
+    }
+
+    [data-testid="stHeader"] {
+        background: transparent !important;
+    }
+
+    .stButton > button {
+        background: linear-gradient(135deg, rgba(255,51,102,0.1) 0%, rgba(204,0,51,0.1) 100%) !important;
+        border: 1px solid rgba(255,51,102,0.4) !important;
+        color: #ff3366 !important;
+        border-radius: 12px !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding: 12px 24px !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        box-shadow: 0 4px 12px rgba(255,51,102,0.1) !important;
+        width: 100%;
+    }
+
+    .stButton > button:hover {
+        background: linear-gradient(135deg, #ff3366 0%, #cc0033 100%) !important;
+        border-color: #ff3366 !important;
+        color: white !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(255,51,102,0.25) !important;
+    }
+
+    div[data-testid="stMarkdownContainer"] h1 {
+        font-weight: 800;
+        background: linear-gradient(to right, #ff3366, #ff80a0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 30px;
+    }
+
+    div[data-testid="stMarkdownContainer"] h2, h3 {
+        color: #ff3366 !important;
+        font-weight: 700;
+    }
+
+    .stRadio > div {
+        background: rgba(255,255,255,0.02);
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+</style>
+""", unsafe_allow_html=True)
+
 def show_explanation(text, technique=None):
-    st.markdown(f'<div style="background: rgba(0, 194, 255, 0.12); border-left: 4px solid #00c2ff; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid rgba(0, 194, 255, 0.25); word-wrap: break-word; overflow-wrap: break-word;"><strong style="color: #00c2ff; font-size: 1.05em; display: block; margin-bottom: 6px;">What this block did:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{text}</span></div>', unsafe_allow_html=True)
+    if st.session_state.theme == 'stitch':
+        bg, border, text_color = "rgba(255, 51, 102, 0.12)", "#ff3366", "#ff3366"
+    else:
+        bg, border, text_color = "rgba(0, 194, 255, 0.12)", "#00c2ff", "#00c2ff"
+        
+    st.markdown(f'<div style="background: {bg}; border-left: 4px solid {border}; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid {border}; word-wrap: break-word; overflow-wrap: break-word;"><strong style="color: {text_color}; font-size: 1.05em; display: block; margin-bottom: 6px;">What this block did:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{text}</span></div>', unsafe_allow_html=True)
 
 def render_explain_button(tab_name, explanation_text, technique=None):
     btn_key = f"explain_state_{tab_name}"
@@ -498,7 +596,12 @@ def render_explain_button(tab_name, explanation_text, technique=None):
         st.session_state[btn_key] = not st.session_state[btn_key]
 
     if st.session_state[btn_key]:
-        st.markdown(f'<div style="background: rgba(0, 194, 255, 0.12); border-left: 4px solid #00c2ff; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid rgba(0, 194, 255, 0.25); word-wrap: break-word; overflow-wrap: break-word;"><strong style="color: #00c2ff; font-size: 1.05em; display: block; margin-bottom: 6px;">Page Explanation:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{explanation_text}</span></div>', unsafe_allow_html=True)
+        if st.session_state.theme == 'stitch':
+            bg, border, text_color = "rgba(255, 51, 102, 0.12)", "#ff3366", "#ff3366"
+        else:
+            bg, border, text_color = "rgba(0, 194, 255, 0.12)", "#00c2ff", "#00c2ff"
+            
+        st.markdown(f'<div style="background: {bg}; border-left: 4px solid {border}; padding: 12px 16px; border-radius: 12px; margin-top: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); border: 1px solid {border}; word-wrap: break-word; overflow-wrap: break-word;"><strong style="color: {text_color}; font-size: 1.05em; display: block; margin-bottom: 6px;">Page Explanation:</strong><span style="color: var(--text-color); font-size: 0.95em; line-height: 1.5;">{explanation_text}</span></div>', unsafe_allow_html=True)
 
 
 
