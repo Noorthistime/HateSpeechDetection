@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -638,6 +639,48 @@ elif st.session_state.theme == 'stitch':
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) * {
         color: #ff3366 !important;
         font-weight: 600 !important;
+    }
+    .premium-hero {
+        position: relative;
+        margin: -45px 0 20px 0 !important;
+        padding: 20px 24px;
+        border-radius: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.34);
+        background: linear-gradient(130deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+        backdrop-filter: blur(18px);
+        box-shadow: 0 16px 38px rgba(40, 8, 15, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        overflow: hidden;
+        transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        text-align: center;
+    }
+
+    .premium-hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+        background-size: 220% 100%;
+        animation: shimmer 6.5s linear infinite;
+        pointer-events: none;
+    }
+
+    .premium-hero:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 51, 102, 0.78);
+        box-shadow: 0 0 30px rgba(255, 51, 102, 0.35), 0 18px 42px rgba(40, 8, 15, 0.5);
+    }
+
+    .premium-hero h1 {
+        margin: 0 !important;
+        font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+        font-weight: 800;
+        color: #f5f9ff !important;
+        background: none !important;
+        -webkit-text-fill-color: #f5f9ff !important;
+        letter-spacing: 0.35px;
+        text-shadow: 0 0 16px rgba(255, 51, 102, 0.45);
+        position: relative;
+        z-index: 1;
     }
 </style>
 """, unsafe_allow_html=True)
