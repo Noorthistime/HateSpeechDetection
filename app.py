@@ -569,11 +569,75 @@ elif st.session_state.theme == 'stitch':
         font-weight: 700;
     }
 
-    .stRadio > div {
-        background: rgba(255,255,255,0.02);
-        padding: 16px;
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.05);
+    /* Style the radio items as beautiful horizontal tabs/buttons */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding-top: 10px;
+    }
+    
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        padding: 12px 16px !important;
+        border-radius: 12px !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 0px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label:hover {
+        background: rgba(255, 51, 102, 0.08) !important;
+        border-color: rgba(255, 51, 102, 0.4) !important;
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(255, 51, 102, 0.15);
+    }
+
+    /* Style for checked state */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label[data-checked="true"],
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) {
+        background: linear-gradient(135deg, rgba(255, 51, 102, 0.22), rgba(139, 0, 0, 0.24)) !important;
+        border-color: rgba(255, 51, 102, 0.7) !important;
+        box-shadow: 0 0 15px rgba(255, 51, 102, 0.25), inset 0 0 8px rgba(255, 51, 102, 0.15);
+    }
+
+    /* Restore the radio bullet circle and make it red when active */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-child {
+        margin-right: 8px;
+    }
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label[data-checked="true"] > div:first-child div {
+        background-color: #ff3366 !important;
+    }
+
+    /* Hide redundant radio widget label */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > label {
+        display: none !important;
+    }
+
+    /* Typography fixes for sidebar header — always dark theme */
+    [data-testid="stSidebar"] h1, 
+    [data-testid="stSidebar"] h2, 
+    [data-testid="stSidebar"] h3 {
+        color: #f5f9ff !important;
+        font-weight: 700;
+        text-shadow: 0 0 12px rgba(255, 51, 102, 0.35);
+        margin-bottom: 12px !important;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label div[data-testid="stMarkdownContainer"] p {
+        color: #f5f9ff !important;
+    }
+
+    /* Keep the active red highlight in both modes */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label[data-checked="true"] *,
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label:has(input:checked) * {
+        color: #ff3366 !important;
+        font-weight: 600 !important;
     }
 </style>
 """, unsafe_allow_html=True)
