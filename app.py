@@ -1331,37 +1331,23 @@ elif menu == "1. Data Loading & Cleaning":
 
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.subheader("Data Cleaning Code")
-        st.code("""
-import re
-import string
-from nltk.corpus import stopwords
-import nltk
-
-stopwords = set(stopwords.words("english"))
-stemmer = nltk.SnowballStemmer("english")
-
-def clean_data(text):
-    text = str(text).lower()
-    text = re.sub(r'https?://\S+|www\.\S+', '', text)
-    text = re.sub(r'\[.*?\]', '', text)
-    text = re.sub('<.*?>+', '', text)
-    text = re.sub('[%s]' %re.escape(string.punctuation), '', text)
-    text = re.sub(r'\\n', '', text)
-    text = re.sub(r'\w*\d\w*', '', text)
-    text = [word for word in text.split() if word not in stopwords]
-    text = " ".join(text)
-    #Stemming the text
-    text = [stemmer.stem(word) for word in text.split(' ')]
-    text = " ".join(text) 
-    return text 
-
-data["clean_tweet"] = data["tweet"].apply(clean_data)
-        """, language="python")
+        st.markdown('<div class="sentinel-card-title">Data Cleaning Code</div>', unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                <span class="keyword">import</span> re<br><span class="keyword">import</span> string<br><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords<br><span class="keyword">import</span> nltk<br>&nbsp;<br>stopwords = set(stopwords.words("english"))<br>stemmer = nltk.SnowballStemmer("english")<br>&nbsp;<br><span class="keyword">def</span> clean_data(text):<br>&nbsp;&nbsp;&nbsp;&nbsp;text = str(text).lower()<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.sub(r'https?://\S+|www\.\S+', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.sub(r'\[.*?\]', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.sub('<.*?>+', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.sub('[%s]' %re.escape(string.punctuation), '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.sub(r'\\n', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.sub(r'\w*\d\w*', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = [word <span class="keyword">for</span> word <span class="keyword">in</span> text.split() <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stopwords]<br>&nbsp;&nbsp;&nbsp;&nbsp;text = " ".join(text)<br>&nbsp;&nbsp;&nbsp;&nbsp;#Stemming the text<br>&nbsp;&nbsp;&nbsp;&nbsp;text = [stemmer.stem(word) <span class="keyword">for</span> word <span class="keyword">in</span> text.split(' ')]<br>&nbsp;&nbsp;&nbsp;&nbsp;text = " ".join(text) <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> text <br>&nbsp;<br>data["clean_tweet"] = data["tweet"].apply(clean_data)
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
     with col2:
-        st.subheader("Data Output (Cleaned)")
-        st.write("First 10 rows of the dataset:")
-        st.dataframe(data.head(10))
+        st.markdown('<div class="sentinel-card-title">Data Output (Cleaned)</div>', unsafe_allow_html=True)
+        
+        with st.container():
+            st.markdown('<div class="metrics-container-hook"></div>', unsafe_allow_html=True)
+            st.markdown('<p style="color: #d1d5db; margin-bottom: 15px; font-weight: 500;">First 10 rows of the dataset:</p>', unsafe_allow_html=True)
+            st.dataframe(data.head(10))
+            
     render_explain_button("loading_cleaning", "This page displays the <span class='tech-hover-container'><span class='glow-tech'>preprocessing pipeline</span><span class='tech-tooltip-box'><strong>Preprocessing Pipeline</strong>A sequence of operations (cleaning, tokenization, stemming) that transforms raw text into structured numerical format for machine learning.</span></span> for Hate Speech detection. It loads the <span class='tech-hover-container'><span class='glow-tech'>Kaggle Hate Speech dataset</span><span class='tech-tooltip-box'><strong>Kaggle Hate Speech Dataset</strong>A publicly available corpus of labeled tweets and comments categorized by toxicity levels (Hate Speech, Offensive, or Clean) used to train classification models.</span></span>, shows a preview of the clean text columns, maps integers to labels, and cleans the text by stripping URLs, digits, punctuation, and applying <span class='tech-hover-container'><span class='glow-tech'>Snowball stemming</span><span class='tech-tooltip-box'><strong>Snowball Stemming</strong>A linguistic algorithm that chops off common prefixes and suffixes of words (e.g., 'protesting' -> 'protest', 'protests' -> 'protest') to map various inflected forms of a word back to its common base root.</span></span>.")
 
 
