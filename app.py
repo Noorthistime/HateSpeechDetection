@@ -520,6 +520,133 @@ if st.session_state.theme == 'default':
         margin: 0 !important;
         padding: 0 !important;
     }
+
+    /* Sentinel AI Model Training Page Overhaul */
+    .sentinel-phase-pill {
+        display: inline-block;
+        padding: 8px 24px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.95rem;
+        letter-spacing: 2.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin: 10px auto 30px auto;
+        text-transform: uppercase;
+        text-align: center;
+        width: max-content;
+    }
+    
+    .sentinel-card-title {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        letter-spacing: 1px;
+    }
+    
+    .sentinel-terminal {
+        background: rgba(10, 10, 15, 0.9) !important;
+        border: 1px solid var(--glass-border) !important;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 12px 35px rgba(0,0,0,0.3);
+        margin-bottom: 30px;
+    }
+    
+    .sentinel-terminal-header {
+        background: rgba(255, 255, 255, 0.04);
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .sentinel-mac-dots {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .sentinel-mac-dots span {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .sentinel-mac-dots .red { background: #ff5f56; }
+    .sentinel-mac-dots .yellow { background: #ffbd2e; }
+    .sentinel-mac-dots .green { background: #27c93f; }
+    
+    .sentinel-processing-tag {
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        padding: 4px 12px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        background: rgba(255, 51, 102, 0.15);
+        color: #ff3366;
+        border: 1px solid rgba(255, 51, 102, 0.3);
+        box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
+    }
+    
+    .sentinel-code-body { white-space: nowrap;
+        padding: 24px;
+        font-family: 'Fira Code', 'Courier New', Courier, monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #d1d5db;
+        overflow-x: auto;
+    }
+    
+    .sentinel-code-body .keyword { color: #00c2ff; font-weight: bold; }
+    .sentinel-code-body .builtin { color: #4f46e5; font-weight: bold; }
+    .sentinel-code-body .string { color: #26d9a4; }
+    .sentinel-code-body .comment { color: #6b7280; font-style: italic; }
+    
+    .sentinel-metrics-card {
+        background: rgba(20, 10, 15, 0.5);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        position: relative;
+    }
+    
+    .sentinel-accuracy-badge {
+        position: absolute;
+        top: -15px;
+        right: 20px;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 900;
+        font-size: 0.95rem;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, rgba(255, 51, 102, 0.9), rgba(139, 0, 0, 0.9));
+        color: white;
+        box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4), inset 0 2px 5px rgba(255,255,255,0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 10;
+    }
+
+    /* Target the st.container holding the metrics matrix to match the terminal styling perfectly */
+    div[data-testid="stVerticalBlock"]:has(.metrics-container-hook):not(:has(div[data-testid="stVerticalBlock"]:has(.metrics-container-hook))) {
+        background: rgba(10, 10, 15, 0.9) !important;
+        border: 1px solid var(--glass-border) !important;
+        border-radius: 14px;
+        padding: 20px 10px;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 12px 35px rgba(0,0,0,0.3);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -823,6 +950,133 @@ elif st.session_state.theme == 'stitch':
         margin: 0 !important;
         padding: 0 !important;
     }
+
+    /* Sentinel AI Model Training Page Overhaul */
+    .sentinel-phase-pill {
+        display: inline-block;
+        padding: 8px 24px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+        border: 1px solid var(--glass-border);
+        border-radius: 30px;
+        color: #fff;
+        font-weight: 800;
+        font-size: 0.95rem;
+        letter-spacing: 2.5px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        margin: 10px auto 30px auto;
+        text-transform: uppercase;
+        text-align: center;
+        width: max-content;
+    }
+    
+    .sentinel-card-title {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-shadow: 0 0 10px rgba(255,255,255,0.3);
+        letter-spacing: 1px;
+    }
+    
+    .sentinel-terminal {
+        background: rgba(10, 10, 15, 0.9) !important;
+        border: 1px solid var(--glass-border) !important;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 12px 35px rgba(0,0,0,0.3);
+        margin-bottom: 30px;
+    }
+    
+    .sentinel-terminal-header {
+        background: rgba(255, 255, 255, 0.04);
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .sentinel-mac-dots {
+        display: flex;
+        gap: 8px;
+    }
+    
+    .sentinel-mac-dots span {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        box-shadow: inset 0 2px 4px rgba(255,255,255,0.2), 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .sentinel-mac-dots .red { background: #ff5f56; }
+    .sentinel-mac-dots .yellow { background: #ffbd2e; }
+    .sentinel-mac-dots .green { background: #27c93f; }
+    
+    .sentinel-processing-tag {
+        font-size: 0.65rem;
+        font-weight: 900;
+        letter-spacing: 1.5px;
+        padding: 4px 12px;
+        border-radius: 6px;
+        text-transform: uppercase;
+        background: rgba(255, 51, 102, 0.15);
+        color: #ff3366;
+        border: 1px solid rgba(255, 51, 102, 0.3);
+        box-shadow: 0 0 10px rgba(255, 51, 102, 0.2);
+    }
+    
+    .sentinel-code-body { white-space: nowrap;
+        padding: 24px;
+        font-family: 'Fira Code', 'Courier New', Courier, monospace;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #d1d5db;
+        overflow-x: auto;
+    }
+    
+    .sentinel-code-body .keyword { color: #ff3366; font-weight: bold; }
+    .sentinel-code-body .builtin { color: #4f46e5; font-weight: bold; }
+    .sentinel-code-body .string { color: #26d9a4; }
+    .sentinel-code-body .comment { color: #6b7280; font-style: italic; }
+    
+    .sentinel-metrics-card {
+        background: rgba(20, 10, 15, 0.5);
+        border: 1px solid var(--glass-border);
+        border-radius: 16px;
+        padding: 28px;
+        box-shadow: 0 12px 35px rgba(0,0,0,0.3);
+        position: relative;
+    }
+    
+    .sentinel-accuracy-badge {
+        position: absolute;
+        top: -15px;
+        right: 20px;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 900;
+        font-size: 0.95rem;
+        letter-spacing: 1.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, rgba(255, 51, 102, 0.9), rgba(139, 0, 0, 0.9));
+        color: white;
+        box-shadow: 0 8px 20px rgba(255, 51, 102, 0.4), inset 0 2px 5px rgba(255,255,255,0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        z-index: 10;
+    }
+
+    /* Target the st.container holding the metrics matrix to match the terminal styling perfectly */
+    div[data-testid="stVerticalBlock"]:has(.metrics-container-hook):not(:has(div[data-testid="stVerticalBlock"]:has(.metrics-container-hook))) {
+        background: rgba(10, 10, 15, 0.9) !important;
+        border: 1px solid var(--glass-border) !important;
+        border-radius: 14px;
+        padding: 20px 10px;
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 12px 35px rgba(0,0,0,0.3);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -1114,33 +1368,47 @@ data["clean_tweet"] = data["tweet"].apply(clean_data)
 elif menu == "2. Model Training & Evaluation":
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.subheader("Model Training Code")
-        st.code("""
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import confusion_matrix, accuracy_score
-
-cv = CountVectorizer()
-x = cv.fit_transform(x)
-
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.33,random_state=42)
-
-dt = DecisionTreeClassifier()
-dt.fit(x_train, y_train)
-y_pred = dt.predict(x_test)
-
-cm = confusion_matrix(y_test, y_pred)
-accuracy = accuracy_score(y_test, y_pred)
-        """, language="python")
+        st.markdown('<div class="sentinel-card-title">Execution Sequence</div>', unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                <span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer<br><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split<br><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier<br><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix, accuracy_score<br>&nbsp;<br>cv = CountVectorizer()<br>x = cv.fit_transform(x)<br>&nbsp;<br>x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.33,random_state=42)<br>&nbsp;<br>dt = DecisionTreeClassifier()<br>dt.fit(x_train, y_train)<br>y_pred = dt.predict(x_test)<br>&nbsp;<br>cm = confusion_matrix(y_test, y_pred)<br>accuracy = accuracy_score(y_test, y_pred)
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
     with col2:
-        st.subheader("Model Evaluation")
-        st.write(f"**Accuracy Score:** {accuracy_score(y_test, y_pred):.4f}")
-        st.write("**Confusion Matrix:**")
-        cm = confusion_matrix(y_test, y_pred)
-        fig, ax = plt.subplots()
-        sns.heatmap(cm, annot=True, fmt="d", cmap="YlGnBu", ax=ax)
-        st.pyplot(fig)
+        accuracy = accuracy_score(y_test, y_pred)
+        st.markdown('<div class="sentinel-card-title">Metrics Matrix</div>', unsafe_allow_html=True)
+        
+        with st.container():
+            st.markdown('<div class="metrics-container-hook"></div>', unsafe_allow_html=True)
+            
+            cm = confusion_matrix(y_test, y_pred)
+            fig, ax = plt.subplots(figsize=(6, 5))
+            
+            is_stitch = st.session_state.get('theme', 'default') == 'stitch'
+            cmap = sns.color_palette("dark:red", as_cmap=True) if is_stitch else sns.color_palette("dark:cyan", as_cmap=True)
+            
+            sns.heatmap(cm, annot=True, fmt="d", cmap=cmap, ax=ax, cbar=True, annot_kws={"size": 12, "weight": "bold"})
+            
+            fig.patch.set_alpha(0.0)
+            ax.set_facecolor('none')
+            for text in ax.texts: text.set_color("white")
+            ax.tick_params(colors='white')
+            cbar = ax.collections[0].colorbar
+            cbar.ax.yaxis.set_tick_params(color='white')
+            plt.setp(plt.getp(cbar.ax.axes, 'yticklabels'), color='white')
+            
+            st.pyplot(fig)
+            
+            st.markdown(f"""
+            <div style="text-align: center; margin-top: 15px; padding-bottom: 10px;">
+                <h4 style="color:#fff; margin: 0; font-weight: 700; letter-spacing: 1px;">CONFUSION MATRIX</h4>
+                <div style="color: {'#ff3366' if is_stitch else '#00c2ff'}; font-weight: 800; font-size: 1.1rem; margin-top: 5px;">ACCURACY: {accuracy:.4f}</div>
+            </div>
+            """, unsafe_allow_html=True)
+            
     render_explain_button("model_eval", "This page displays the model training process and <span class='tech-hover-container'><span class='glow-tech'>evaluation metrics</span><span class='tech-tooltip-box'><strong>Evaluation Metrics</strong>Quantitative scores (like accuracy, precision, recall) used to assess how well a machine learning model generalizes to unseen test datasets.</span></span>. It displays the Scikit-Learn code used to train a <span class='tech-hover-container'><span class='glow-tech'>DecisionTreeClassifier</span><span class='tech-tooltip-box'><strong>Decision Tree Classifier</strong>A non-parametric supervised learning algorithm that splits the data into tree nodes based on feature decision rules to maximize information gain.</span></span>, shows the accuracy score (~87-89%), and visualizes a heatmap <span class='tech-hover-container'><span class='glow-tech'>confusion matrix</span><span class='tech-tooltip-box'><strong>Confusion Matrix</strong>A specific grid layout table that visualizes the performance of a supervised learning algorithm by mapping true positives, true negatives, false positives, and false negatives.</span></span> representing predicted versus actual hate speech categories.")
 
 
