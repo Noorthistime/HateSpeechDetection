@@ -1406,7 +1406,7 @@ elif menu == "3. Live Prediction Test":
         st.markdown(f"""
         <div class="sentinel-terminal">
             <div class="sentinel-code-body">
-                sample = user_input<br>sample = clean_data(sample)<br>data1 = cv.transform([sample]).toarray()<br>prediction = dt.predict(data1)<br>print(prediction)
+                sample = user_input<br>sample = <span class="builtin">clean_data</span>(sample)<br>data1 = cv.<span class="builtin">transform</span>([sample]).<span class="builtin">toarray</span>()<br>prediction = dt.<span class="builtin">predict</span>(data1)<br><span class="keyword">print</span>(prediction)
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -1415,7 +1415,7 @@ elif menu == "3. Live Prediction Test":
         st.markdown('<div class="sentinel-card-title">Live Test</div>', unsafe_allow_html=True)
         with st.container():
             st.markdown('<div class="metrics-container-hook"></div>', unsafe_allow_html=True)
-            user_input = st.text_input("Enter a tweet or message to test:", "Let's unite and kill all the people who are protesting against the government")
+            user_input = st.text_area("Enter a tweet or message to test:", "Let's unite and kill all the people who are protesting against the government", height=100)
             if st.button("Predict"):
                 sample = clean_data(user_input)
                 data1 = cv.transform([sample]).toarray()
