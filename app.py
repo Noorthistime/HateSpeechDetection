@@ -866,39 +866,39 @@ if menu == "Project Overview":
 </div>
 
 <!-- Pipeline Workflow Panel (Full width) -->
-<div style="background: rgba(255, 159, 28, 0.05); border: 1px solid rgba(255, 159, 28, 0.22); padding: 20px; border-radius: 14px; margin-bottom: 24px;">
-<h3 style="color: #ff9f1c; margin-top: 0; margin-bottom: 16px; font-size: 1.25em; display: flex; align-items: center; gap: 8px;">• Pipeline Workflow</h3>
+<div style="background: rgba(255, 51, 102, 0.05); border: 1px solid rgba(255, 51, 102, 0.22); padding: 20px; border-radius: 14px; margin-bottom: 24px;">
+<h3 style="color: #ff3366; margin-top: 0; margin-bottom: 16px; font-size: 1.25em; display: flex; align-items: center; gap: 8px;">• Pipeline Workflow</h3>
 <div style="display: flex; flex-direction: column; gap: 12px;">
-<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff9f1c; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
-<div style="font-size: 1.2em; font-weight: bold; color: #ff9f1c; min-width: 32px;">01</div>
+<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff3366; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
+<div style="font-size: 1.2em; font-weight: bold; color: #ff3366; min-width: 32px;">01</div>
 <div>
 <strong style="color: #eef3ff; display: block; font-size: 0.95em; margin-bottom: 2px;">Data Loading & Mapping</strong>
 <span style="color: #c9d1d9; font-size: 0.88em; line-height: 1.4;">Loads the raw dataset containing labeled social media comments and maps label index categories (0, 1, 2) to descriptive text categories.</span>
 </div>
 </div>
-<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff9f1c; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
-<div style="font-size: 1.2em; font-weight: bold; color: #ff9f1c; min-width: 32px;">02</div>
+<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff3366; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
+<div style="font-size: 1.2em; font-weight: bold; color: #ff3366; min-width: 32px;">02</div>
 <div>
 <strong style="color: #eef3ff; display: block; font-size: 0.95em; margin-bottom: 2px;">Linguistic Text Cleaning</strong>
 <span style="color: #c9d1d9; font-size: 0.88em; line-height: 1.4;">Preprocesses raw text by converting characters to lowercase, stripping URLs, removing HTML tags, filtering out punctuation, and purging standard English stop words.</span>
 </div>
 </div>
-<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff9f1c; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
-<div style="font-size: 1.2em; font-weight: bold; color: #ff9f1c; min-width: 32px;">03</div>
+<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff3366; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
+<div style="font-size: 1.2em; font-weight: bold; color: #ff3366; min-width: 32px;">03</div>
 <div>
 <strong style="color: #eef3ff; display: block; font-size: 0.95em; margin-bottom: 2px;">Snowball Stemming</strong>
 <span style="color: #c9d1d9; font-size: 0.88em; line-height: 1.4;">Applies the Snowball Stemming algorithm to reduce inflected or derived words down to their baseline linguistic root form (e.g. "protests" and "protesting" map to "protest").</span>
 </div>
 </div>
-<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff9f1c; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
-<div style="font-size: 1.2em; font-weight: bold; color: #ff9f1c; min-width: 32px;">04</div>
+<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff3366; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
+<div style="font-size: 1.2em; font-weight: bold; color: #ff3366; min-width: 32px;">04</div>
 <div>
 <strong style="color: #eef3ff; display: block; font-size: 0.95em; margin-bottom: 2px;">Count Vectorization (Bag of Words)</strong>
 <span style="color: #c9d1d9; font-size: 0.88em; line-height: 1.4;">Transforms cleaned word tokens into sparse matrix representation, counting token occurrences to build the classification vocabulary.</span>
 </div>
 </div>
-<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff9f1c; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
-<div style="font-size: 1.2em; font-weight: bold; color: #ff9f1c; min-width: 32px;">05</div>
+<div style="background: rgba(255, 255, 255, 0.02); border-left: 4px solid #ff3366; border-top: 1px solid rgba(255, 255, 255, 0.05); border-right: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding: 14px 18px; border-radius: 4px 12px 12px 4px; display: flex; align-items: center; gap: 16px;">
+<div style="font-size: 1.2em; font-weight: bold; color: #ff3366; min-width: 32px;">05</div>
 <div>
 <strong style="color: #eef3ff; display: block; font-size: 0.95em; margin-bottom: 2px;">Decision Tree Training & Evaluation</strong>
 <span style="color: #c9d1d9; font-size: 0.88em; line-height: 1.4;">Splits features into train/test sets, fits a Decision Tree Classifier, reports test accuracy, and prepares visual evaluation matrices.</span>
@@ -931,9 +931,9 @@ if menu == "Project Overview":
 </div>
 
 <!-- Metrics Ribbon -->
-<div style="margin-top: 24px; background: rgba(0, 194, 255, 0.05); border: 1px solid rgba(0, 194, 255, 0.15); padding: 16px; border-radius: 12px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 16px;">
+<div style="margin-top: 24px; background: rgba(255, 51, 102, 0.05); border: 1px solid rgba(255, 51, 102, 0.15); padding: 16px; border-radius: 12px; display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; gap: 16px;">
 <div>
-<div style="font-size: 1.8em; font-weight: bold; color: #00c2ff;">24,783</div>
+<div style="font-size: 1.8em; font-weight: bold; color: #ff3366;">24,783</div>
 <div style="font-size: 0.85em; color: #8b949e; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px;">Dataset Tweets</div>
 </div>
 <div style="border-left: 1px solid rgba(255, 255, 255, 0.1); height: 50px; align-self: center;"></div>
