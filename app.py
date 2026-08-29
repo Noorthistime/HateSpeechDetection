@@ -1399,29 +1399,34 @@ elif menu == "2. Model Training & Evaluation":
 
 
 elif menu == "3. Live Prediction Test":
+
     col1, col2 = st.columns([1, 1])
     with col1:
-        st.subheader("Prediction Code")
-        st.code("""
-sample = user_input
-sample = clean_data(sample)
-data1 = cv.transform([sample]).toarray()
-prediction = dt.predict(data1)
-print(prediction)
-        """, language="python")
+        st.markdown('<div class="sentinel-card-title">Prediction Code</div>', unsafe_allow_html=True)
+        st.markdown(f"""
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                sample = user_input<br>sample = clean_data(sample)<br>data1 = cv.transform([sample]).toarray()<br>prediction = dt.predict(data1)<br>print(prediction)
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
     with col2:
-        st.subheader("Live Test")
-        user_input = st.text_input("Enter a tweet or message to test:", "Let's unite and kill all the people who are protesting against the government")
-        if st.button("Predict"):
-            sample = clean_data(user_input)
-            data1 = cv.transform([sample]).toarray()
-            prediction = dt.predict(data1)[0]
-            if prediction == "Hate Speech":
-                st.error("🚨 " + prediction)
-            elif prediction == "Offensive language":
-                st.warning("⚠️ " + prediction)
-            else:
-                st.success("✅ " + prediction)
+        st.markdown('<div class="sentinel-card-title">Live Test</div>', unsafe_allow_html=True)
+        with st.container():
+            st.markdown('<div class="metrics-container-hook"></div>', unsafe_allow_html=True)
+            user_input = st.text_input("Enter a tweet or message to test:", "Let's unite and kill all the people who are protesting against the government")
+            if st.button("Predict"):
+                sample = clean_data(user_input)
+                data1 = cv.transform([sample]).toarray()
+                prediction = dt.predict(data1)[0]
+                if prediction == "Hate Speech":
+                    st.error("🚨 " + prediction)
+                elif prediction == "Offensive language":
+                    st.warning("⚠️ " + prediction)
+                else:
+                    st.success("✅ " + prediction)
+                    
     render_explain_button("live_pred", "This page allows you to input custom phrases to test the classifier live. The model <span class='tech-hover-container'><span class='glow-tech'>vectorizes</span><span class='tech-tooltip-box'><strong>Vector Inference</strong>Converts raw text characters and tokens into numeric coordinate arrays (vectors) representing word counts or occurrences in the vocabulary.</span></span> your input, applies the trained <span class='tech-hover-container'><span class='glow-tech'>Decision Tree classification</span><span class='tech-tooltip-box'><strong>Decision Tree Classification</strong>The decision path traversal of a trained tree model, moving through split nodes to predict the class of a new test input.</span></span>, and uses a <span class='tech-hover-container'><span class='glow-tech'>CountVectorizer</span><span class='tech-tooltip-box'><strong>Count Vectorizer</strong>A Scikit-Learn feature extraction tool that builds a vocabulary dictionary of words and encodes documents into sparse occurrence frequency matrices.</span></span> vocabulary representation to display the prediction category.")
 
 
