@@ -1406,7 +1406,7 @@ elif menu == "3. Live Prediction Test":
         st.markdown(f"""
         <div class="sentinel-terminal">
             <div class="sentinel-code-body">
-                sample = user_input<br>sample = <span class="builtin">clean_data</span>(sample)<br>data1 = cv.<span class="builtin">transform</span>([sample]).<span class="builtin">toarray</span>()<br>prediction = dt.<span class="builtin">predict</span>(data1)<br><span class="keyword">print</span>(prediction)
+                sample = user_input<br>sample = <span class="keyword">clean_data</span>(sample)<br>data1 = cv.<span class="keyword">transform</span>([sample]).<span class="keyword">toarray</span>()<br>prediction = dt.<span class="keyword">predict</span>(data1)<br><span class="keyword">print</span>(prediction)
             </div>
         </div>
         """, unsafe_allow_html=True)
