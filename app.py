@@ -1439,82 +1439,57 @@ elif menu == "4. Full Code Explorer":
         st.subheader("Interactive Code Explorer")
         
         st.markdown("### Block 1: Imports & Data Loading")
-        st.code('''import pandas as pd
-import numpy as np
-import sklearn
-import re
-import nltk
-from nltk.corpus import stopwords
-import string
-
-dataset = pd.read_csv("labeled_data.csv")
-dataset["labels"] = dataset["class"].map({
-    0: "Hate Speech", 
-    1: "Offensive language", 
-    2: "No hate or offensive language"
-})
-data = dataset[["tweet" , "labels"]].copy()''', language="python")
+        st.markdown('''
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                <span class="keyword">import</span> pandas <span class="keyword">as</span> pd<br><span class="keyword">import</span> numpy <span class="keyword">as</span> np<br><span class="keyword">import</span> sklearn<br><span class="keyword">import</span> re<br><span class="keyword">import</span> nltk<br><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords<br><span class="keyword">import</span> string<br>&nbsp;<br>dataset = pd.<span class="builtin">read_csv</span>("labeled_data.csv")<br>dataset["labels"] = dataset["<span class="keyword">class</span>"].<span class="builtin">map</span>({<br>&nbsp;&nbsp;&nbsp;&nbsp;0: "Hate Speech", <br>&nbsp;&nbsp;&nbsp;&nbsp;1: "Offensive language", <br>&nbsp;&nbsp;&nbsp;&nbsp;2: "No hate <span class="keyword">or</span> offensive language"<br>})<br>data = dataset[["tweet" , "labels"]].<span class="builtin">copy</span>()
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
         if st.button("▶ Run Block 1 (Data Loading)"):
             st.session_state.hate_active_block = "block1"
             
         st.markdown("### Block 2: Data Cleaning")
-        st.code('''stemmer = nltk.SnowballStemmer("english")
-stopwords = set(stopwords.words("english"))
-
-def clean_data(text):
-    text = str(text).lower()
-    text = re.sub(r'https?://\S+|www\.\S+', '', text)
-    text = re.sub(r'\[.*?\]', '', text)
-    text = re.sub('<.*?>+', '', text)
-    text = re.sub('[%s]' %re.escape(string.punctuation), '', text)
-    text = re.sub(r'\\n', '', text)
-    text = re.sub(r'\w*\d\w*', '', text)
-    text = [word for word in text.split() if word not in stopwords]
-    text = " ".join(text)
-    text = [stemmer.stem(word) for word in text.split(' ')]
-    text = " ".join(text) 
-    return text 
-
-data["tweet"] = data["tweet"].apply(clean_data)''', language="python")
+        st.markdown('''
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                stemmer = nltk.SnowballStemmer("english")<br>stopwords = <span class="builtin">set</span>(stopwords.words("english"))<br>&nbsp;<br><span class="keyword">def</span> clean_data(text):<br>&nbsp;&nbsp;&nbsp;&nbsp;text = <span class="builtin">str</span>(text).<span class="builtin">lower</span>()<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.<span class="builtin">sub</span>(r'https?://\S+|www\.\S+', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.<span class="builtin">sub</span>(r'\[.*?\]', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.<span class="builtin">sub</span>('<.*?>+', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.<span class="builtin">sub</span>('[%s]' %re.<span class="builtin">escape</span>(string.punctuation), '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.<span class="builtin">sub</span>(r'\\n', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = re.<span class="builtin">sub</span>(r'\w*\d\w*', '', text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = [word <span class="keyword">for</span> word <span class="keyword">in</span> text.<span class="builtin">split</span>() <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> stopwords]<br>&nbsp;&nbsp;&nbsp;&nbsp;text = " ".<span class="builtin">join</span>(text)<br>&nbsp;&nbsp;&nbsp;&nbsp;text = [stemmer.<span class="builtin">stem</span>(word) <span class="keyword">for</span> word <span class="keyword">in</span> text.<span class="builtin">split</span>(' ')]<br>&nbsp;&nbsp;&nbsp;&nbsp;text = " ".<span class="builtin">join</span>(text) <br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">return</span> text <br>&nbsp;<br>data["tweet"] = data["tweet"].<span class="builtin">apply</span>(clean_data)
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
         if st.button("▶ Run Block 2 (Cleaning)"):
             st.session_state.hate_active_block = "block2"
 
         st.markdown("### Block 3: Model Training & Accuracy")
-        st.code('''x = np.array(data["tweet"])
-y = np.array(data["labels"])
-
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.model_selection import train_test_split
-cv = CountVectorizer()
-x = cv.fit_transform(x)
-
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.33,random_state=42)
-
-from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier()
-dt.fit(x_train, y_train)
-y_pred = dt.predict(x_test)
-
-from sklearn.metrics import accuracy_score 
-accuracy_score(y_test, y_pred)''', language="python")
+        st.markdown('''
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                x = np.array(data["tweet"])<br>y = np.array(data["labels"])<br>&nbsp;<br><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer<br><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split<br>cv = CountVectorizer()<br>x = cv.<span class="builtin">fit_transform</span>(x)<br>&nbsp;<br>x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.33,random_state=42)<br>&nbsp;<br><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier<br>dt = DecisionTreeClassifier()<br>dt.<span class="builtin">fit</span>(x_train, y_train)<br>y_pred = dt.<span class="builtin">predict</span>(x_test)<br>&nbsp;<br><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score <br>accuracy_score(y_test, y_pred)
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
         if st.button("▶ Run Block 3 (Model Training)"):
             st.session_state.hate_active_block = "block3"
             
         st.markdown("### Block 4: Confusion Matrix")
-        st.code('''from sklearn.metrics import confusion_matrix
-import seaborn as sns
-import matplotlib.pyplot as plt
-
-cm = confusion_matrix(y_test, y_pred)
-sns.heatmap(cm, annot = True, fmt="f", cmap = "YlGnBu")''', language="python")
+        st.markdown('''
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                <span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix<br><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns<br><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt<br>&nbsp;<br>cm = confusion_matrix(y_test, y_pred)<br>sns.<span class="builtin">heatmap</span>(cm, annot = <span class="builtin">True</span>, fmt="f", cmap = "YlGnBu")
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
         if st.button("▶ Run Block 4 (Confusion Matrix)"):
             st.session_state.hate_active_block = "block4"
             
         st.markdown("### Block 5: Sample Predictions")
-        st.code('''sample = "Let's unite and kill all the people who are protesting against the government"
-sample = clean_data(sample)
-data1 = cv.transform([sample]).toarray()
-dt.predict(data1)''', language="python")
+        st.markdown('''
+        <div class="sentinel-terminal">
+            <div class="sentinel-code-body">
+                sample = "Let's unite <span class="keyword">and</span> kill all the people who are protesting against the government"<br>sample = clean_data(sample)<br>data1 = cv.<span class="builtin">transform</span>([sample]).<span class="builtin">toarray</span>()<br>dt.<span class="builtin">predict</span>(data1)
+            </div>
+        </div>
+        ''', unsafe_allow_html=True)
         if st.button("▶ Run Block 5 (Sample Prediction)"):
             st.session_state.hate_active_block = "block5"
             
