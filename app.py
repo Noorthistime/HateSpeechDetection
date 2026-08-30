@@ -345,9 +345,11 @@ if st.session_state.theme == 'default':
         box-shadow: 0 0 15px rgba(0, 194, 255, 0.25), inset 0 0 8px rgba(0, 194, 255, 0.15);
     }
 
-    /* The Ultimate Last-Sibling Strategy */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-of-type),
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg {
+    /* The Ultimate Unbreakable Solution */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-child),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > span:not(:last-child),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg,
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label [data-baseweb="radio-mark-outer"] {
         display: none !important;
     }
     
@@ -360,19 +362,19 @@ if st.session_state.theme == 'default':
         opacity: 0 !important;
     }
 
-    /* Draw our custom empty circle */
+    /* Draw our custom empty circle with absolute authority */
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label::before {
-        content: "";
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        margin-right: 12px;
-        margin-top: 2px;
-        border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        background-color: transparent;
-        transition: all 0.2s ease-in-out;
-        flex-shrink: 0;
+        content: "" !important;
+        display: inline-block !important;
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 12px !important;
+        margin-top: 2px !important;
+        border-radius: 50% !important;
+        border: 2px solid rgba(255, 255, 255, 0.4) !important;
+        background-color: transparent !important;
+        transition: all 0.2s ease-in-out !important;
+        flex-shrink: 0 !important;
     }
 
     /* Draw our custom checked circle with the glowing theme color */
@@ -835,9 +837,11 @@ elif st.session_state.theme == 'stitch':
         box-shadow: 0 0 15px rgba(255, 51, 102, 0.25), inset 0 0 8px rgba(255, 51, 102, 0.15);
     }
 
-    /* The Ultimate Last-Sibling Strategy */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-of-type),
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg {
+    /* The Ultimate Unbreakable Solution */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-child),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > span:not(:last-child),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg,
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label [data-baseweb="radio-mark-outer"] {
         display: none !important;
     }
     
@@ -850,19 +854,19 @@ elif st.session_state.theme == 'stitch':
         opacity: 0 !important;
     }
 
-    /* Draw our custom empty circle */
+    /* Draw our custom empty circle with absolute authority */
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label::before {
-        content: "";
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        margin-right: 12px;
-        margin-top: 2px;
-        border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        background-color: transparent;
-        transition: all 0.2s ease-in-out;
-        flex-shrink: 0;
+        content: "" !important;
+        display: inline-block !important;
+        width: 16px !important;
+        height: 16px !important;
+        margin-right: 12px !important;
+        margin-top: 2px !important;
+        border-radius: 50% !important;
+        border: 2px solid rgba(255, 255, 255, 0.4) !important;
+        background-color: transparent !important;
+        transition: all 0.2s ease-in-out !important;
+        flex-shrink: 0 !important;
     }
 
     /* Draw our custom checked circle with the glowing theme color */
