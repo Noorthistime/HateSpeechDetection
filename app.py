@@ -345,8 +345,8 @@ if st.session_state.theme == 'default':
         box-shadow: 0 0 15px rgba(0, 194, 255, 0.25), inset 0 0 8px rgba(0, 194, 255, 0.15);
     }
 
-    /* The Smart Sibling Strategy */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-of-type:not(:last-of-type),
+    /* The Ultimate Last-Sibling Strategy */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-of-type),
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg {
         display: none !important;
     }
@@ -835,8 +835,8 @@ elif st.session_state.theme == 'stitch':
         box-shadow: 0 0 15px rgba(255, 51, 102, 0.25), inset 0 0 8px rgba(255, 51, 102, 0.15);
     }
 
-    /* The Smart Sibling Strategy */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-of-type:not(:last-of-type),
+    /* The Ultimate Last-Sibling Strategy */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-of-type),
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg {
         display: none !important;
     }
