@@ -346,7 +346,8 @@ if st.session_state.theme == 'default':
     }
 
     /* The Trojan Horse Strategy: Hide Streamlit's native dot container */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-of-type {
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not([data-testid="stMarkdownContainer"]),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg {
         display: none !important;
     }
 
@@ -826,7 +827,8 @@ elif st.session_state.theme == 'stitch':
     }
 
     /* The Trojan Horse Strategy: Hide Streamlit's native dot container */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:first-of-type {
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not([data-testid="stMarkdownContainer"]),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg {
         display: none !important;
     }
 
