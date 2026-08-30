@@ -345,12 +345,18 @@ if st.session_state.theme == 'default':
         box-shadow: 0 0 15px rgba(0, 194, 255, 0.25), inset 0 0 8px rgba(0, 194, 255, 0.15);
     }
 
-    /* The Ultimate Unbreakable Solution */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-child),
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > span:not(:last-child),
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg,
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label [data-baseweb="radio-mark-outer"] {
-        display: none !important;
+    /* The Nuclear Stealth Strategy: Strip all colors from the native dot to make it an invisible spacer */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label {
+        position: relative !important;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > :not(:last-child),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > :not(:last-child) * {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+        fill: transparent !important;
+        stroke: transparent !important;
     }
     
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label input[type="radio"] {
@@ -362,19 +368,20 @@ if st.session_state.theme == 'default':
         opacity: 0 !important;
     }
 
-    /* Draw our custom empty circle with absolute authority */
+    /* Draw our custom empty circle floating perfectly over the ghost dot */
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label::before {
         content: "" !important;
-        display: inline-block !important;
+        position: absolute !important;
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         width: 16px !important;
         height: 16px !important;
-        margin-right: 12px !important;
-        margin-top: 2px !important;
         border-radius: 50% !important;
         border: 2px solid rgba(255, 255, 255, 0.4) !important;
         background-color: transparent !important;
         transition: all 0.2s ease-in-out !important;
-        flex-shrink: 0 !important;
+        z-index: 10 !important;
     }
 
     /* Draw our custom checked circle with the glowing theme color */
@@ -837,12 +844,18 @@ elif st.session_state.theme == 'stitch':
         box-shadow: 0 0 15px rgba(255, 51, 102, 0.25), inset 0 0 8px rgba(255, 51, 102, 0.15);
     }
 
-    /* The Ultimate Unbreakable Solution */
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > div:not(:last-child),
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > span:not(:last-child),
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > svg,
-    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label [data-baseweb="radio-mark-outer"] {
-        display: none !important;
+    /* The Nuclear Stealth Strategy: Strip all colors from the native dot to make it an invisible spacer */
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label {
+        position: relative !important;
+    }
+
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > :not(:last-child),
+    [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label > :not(:last-child) * {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+        fill: transparent !important;
+        stroke: transparent !important;
     }
     
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label input[type="radio"] {
@@ -854,19 +867,20 @@ elif st.session_state.theme == 'stitch':
         opacity: 0 !important;
     }
 
-    /* Draw our custom empty circle with absolute authority */
+    /* Draw our custom empty circle floating perfectly over the ghost dot */
     [data-testid="stSidebar"] [data-testid="stRadio"] > div[role="radiogroup"] > label::before {
         content: "" !important;
-        display: inline-block !important;
+        position: absolute !important;
+        left: 16px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
         width: 16px !important;
         height: 16px !important;
-        margin-right: 12px !important;
-        margin-top: 2px !important;
         border-radius: 50% !important;
         border: 2px solid rgba(255, 255, 255, 0.4) !important;
         background-color: transparent !important;
         transition: all 0.2s ease-in-out !important;
-        flex-shrink: 0 !important;
+        z-index: 10 !important;
     }
 
     /* Draw our custom checked circle with the glowing theme color */
